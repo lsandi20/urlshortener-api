@@ -8,6 +8,7 @@ import (
 func AssignRoutes() (router *gin.Engine) {
 	router = gin.Default()
 	router.GET("/links", services.GetLinks)
+	router.POST("/links", services.CreateLink)
 	router.GET("/:short", services.RedirectURL)
 	return
 }
