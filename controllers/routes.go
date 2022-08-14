@@ -19,6 +19,7 @@ func AssignRoutes() (router *gin.Engine) {
 	config.MaxAge = 12 * time.Hour
 	router.Use(cors.New(config))
 
+	router.GET("/", services.RedirectToClient)
 	router.GET("/links", services.GetLinks)
 	router.POST("/link", services.CreateLink)
 	router.GET("/:short", services.RedirectURL)

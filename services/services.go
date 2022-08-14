@@ -7,12 +7,17 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/lsandi20/urlshortener-api/config"
 	"github.com/lsandi20/urlshortener-api/database"
 	"github.com/lsandi20/urlshortener-api/models"
 	"github.com/teris-io/shortid"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
+
+func RedirectToClient(c *gin.Context) {
+	c.Redirect(http.StatusMovedPermanently, config.Configs["CLIENT_URL"])
+}
 
 func RedirectURL(c *gin.Context) {
 	short := c.Param("short")
